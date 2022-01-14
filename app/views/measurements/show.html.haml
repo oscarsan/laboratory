@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @measurement.name
+%p
+  %strong Unit:
+  = @measurement.unit
+%p
+  %strong Upper limit:
+  = @measurement.upper_limit
+%p
+  %strong Lower limit:
+  = @measurement.lower_limit
+= link_to 'Edit', edit_measurement_path(@measurement)
+|
+= link_to 'Back', measurements_path
