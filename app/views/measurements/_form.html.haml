@@ -7,17 +7,17 @@
       %ul
         - measurement.errors.full_messages.each do |message|
           %li= message
-  .field
-    = form.label :name
-    = form.text_field :name
-  .field
-    = form.label :unit
-    = form.text_field :unit
-  .field
-    = form.label :upper_limit
-    = form.text_field :upper_limit
-  .field
-    = form.label :lower_limit
-    = form.text_field :lower_limit
-  .actions
-    = form.submit
+  .form-group
+    = form.label :name, "Name", class: "col-md-4 control-label"
+    = form.text_field :name, class: "form-control col-md-4"
+  .form-group
+    = form.label :unit, "Unit", class: "col-md-4 control-label"
+    = form.text_field :unit, class: "form-control  col-md-4"
+  .form-group
+    = form.label :upper_limit, "Upper Limit", class: "col-md-4 control-label"
+    = form.text_field :upper_limit, class: "form-control  col-md-4"
+  .form-group
+    = form.label :lower_limit, "Lower Limit", class: "col-md-4 control-label"
+    = form.text_field :lower_limit, class: "form-control  col-md-4"
+    .actions
+      = form.submit "Submit", class: "btn btn-default btn-primary mt-4"

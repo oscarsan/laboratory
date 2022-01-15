@@ -1,6 +1,6 @@
 %p#notice= notice
-%h1 Measurements
-%table
+%h1.h1 Measurements
+%table.table
   %thead
     %tr
       %th Name
@@ -18,5 +18,5 @@
         %td= link_to 'Show', measurement
         %td= link_to 'Edit', edit_measurement_path(measurement)
         %td= link_to 'Destroy', measurement, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Measurement', new_measurement_path
+%button.btn.btn-primary.btn-link.ml-4
+  = link_to 'New Measurement', new_measurement_path

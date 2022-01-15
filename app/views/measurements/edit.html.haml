@@ -1,5 +1,7 @@
 %h1 Editing Measurement
-= render 'form', measurement: @measurement
-= link_to 'Show', @measurement
-|
-= link_to 'Back', measurements_path
+.ml-4
+  = render 'form', measurement: @measurement
+  %button.btn.btn-default.btn-primary.btn-link
+    = link_to 'Show', @measurement
+  %button.btn.btn-default.btn-primary.btn-link
+    = link_to 'Back', measurements_path

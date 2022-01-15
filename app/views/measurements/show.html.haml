@@ -1,16 +1,20 @@
 %p#notice= notice
-%p
-  %strong Name:
-  = @measurement.name
-%p
-  %strong Unit:
-  = @measurement.unit
-%p
-  %strong Upper limit:
-  = @measurement.upper_limit
-%p
-  %strong Lower limit:
-  = @measurement.lower_limit
-= link_to 'Edit', edit_measurement_path(@measurement)
-|
-= link_to 'Back', measurements_path
+
+%ul.list-group
+  %li.list-group-item
+    %strong Name:
+    = @measurement.name
+  %li.list-group-item
+    %strong Unit:
+    = @measurement.unit
+  %li.list-group-item
+    %strong Upper limit:
+    = @measurement.upper_limit
+  %li.list-group-item
+    %strong Lower limit:
+    = @measurement.lower_limit
+.ml-4.mt-4
+  %button.btn.btn-default.btn-primary.btn-link
+    = link_to 'Edit', edit_measurement_path(@measurement)
+  %button.btn.btn-default.btn-primary.btn-link
+    = link_to 'Back', measurements_path
