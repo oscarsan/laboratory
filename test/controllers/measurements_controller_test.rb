@@ -17,10 +17,18 @@ class MeasurementsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create measurement" do
     assert_difference('Measurement.count') do
-      post measurements_url, params: { measurement: { lower_limit: @measurement.lower_limit, name: @measurement.name, unit: @measurement.unit, upper_limit: @measurement.upper_limit } }
+      post measurements_url, params: { measurement: { lower_limit: @measurement.lower_limit, name: "new name", unit: @measurement.unit, upper_limit: @measurement.upper_limit } }
     end
 
     assert_redirected_to measurement_url(Measurement.last)
+  end
+
+  test "should fail create measurement with same name" do
+    assert_no_difference('Measurement.count') do
+      post measurements_url, params: { measurement: { lower_limit: @measurement.lower_limit, name: @measurement.name, unit: @measurement.unit, upper_limit: @measurement.upper_limit } }
+    end
+
+    assert_response 422
   end
 
   test "should show measurement" do
@@ -34,8 +42,13 @@ class MeasurementsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update measurement" do
-    patch measurement_url(@measurement), params: { measurement: { lower_limit: @measurement.lower_limit, name: @measurement.name, unit: @measurement.unit, upper_limit: @measurement.upper_limit } }
+    patch measurement_url(@measurement), params: { measurement: { lower_limit: @measurement.lower_limit, name: "new name", unit: @measurement.unit, upper_limit: @measurement.upper_limit } }
     assert_redirected_to measurement_url(@measurement)
+  end
+  
+  test "should create error on update measurement with same name" do
+    patch measurement_url(@measurement), params: { measurement: { lower_limit: @measurement.lower_limit, name: @measurement.name, unit: @measurement.unit, upper_limit: @measurement.upper_limit } }
+    assert_response 422
   end
 
   test "should destroy measurement" do
