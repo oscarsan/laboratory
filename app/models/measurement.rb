@@ -9,7 +9,7 @@ class Measurement < ApplicationRecord
 private
   def start_must_be_before_end_time
     return if not lower_limit or not upper_limit
-    errors.add(:lower_limit, "must be before end time") if
+    errors.add(:lower_limit, "lower must be lower") if
        lower_limit > upper_limit
   end
 end
