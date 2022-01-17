@@ -44,4 +44,13 @@ class MeasurementTest < ActiveSupport::TestCase
     assert measurement.save
   end
 
+  test "fails lower limit should be lower than upper" do
+    measurement = Measurement.new
+    measurement.name = "two"
+    measurement.unit = "m/ml"
+    measurement.lower_limit = "5"
+    measurement.upper_limit = "2.3"
+    assert_not measurement.save
+  end
+
 end
