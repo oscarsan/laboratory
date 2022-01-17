@@ -3,6 +3,8 @@ require 'test_helper'
 class MeasurementsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @measurement = measurements(:one)
+    @measurement.upper_limit = 5
+    @measurement.lower_limit = 3
   end
 
   test "should get index" do
