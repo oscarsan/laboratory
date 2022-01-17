@@ -26,6 +26,23 @@ class MeasurementTest < ActiveSupport::TestCase
     assert measurement.save
   end
 
+  test "name should be unique" do
+    measurement = Measurement.new
+    measurement.name = "two"
+    measurement.unit = "m/ml"
+    measurement.lower_limit = "1"
+    measurement.upper_limit = "2.3"
+    measurement.save
+
+    measurement2 = Measurement.new
+    measurement2.name = "two"
+    measurement2.unit = "m/m"
+    measurement2.lower_limit = "2"
+    measurement2.upper_limit = "2.3"
+    assert_not measurement2.save
+  end
+
+
   test "upper and lower limit should be convertible to number fails" do
     measurement = Measurement.new
     measurement.name = "two"
